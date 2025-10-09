@@ -26,4 +26,9 @@ public class FunctionMeta {
         metabytes[name.length] = offset;
         return metabytes;
     }
+
+    @Override
+    public String toString() {
+        return "{Name: "+new String(name)+", Offset: "+offset+"}";
+    }
 }
