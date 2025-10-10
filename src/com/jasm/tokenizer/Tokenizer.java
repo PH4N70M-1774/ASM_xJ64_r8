@@ -8,7 +8,7 @@ public class Tokenizer {
         List<String> t = new ArrayList<>();
 
         for (String s1 : content.split("\n")) {
-            for (String s2 : s1.trim().split("\\s+(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)|:(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)")) {
+            for (String s2 : s1.trim().split("\\s+(?=(?:[^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)|(?:::|:)(?=(?:[^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)\r\n")) {
                 t.add(s2);
             }
         }

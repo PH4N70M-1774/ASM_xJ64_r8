@@ -17,11 +17,15 @@ public class FunctionMeta {
         this.offset = offset;
     }
 
-    public int[] getMetabytes() {
-        int[] metabytes = new int[name.length+2];
-        metabytes[0] = name.length;
+    public String getName() {
+        return new String(name);
+    }
+
+    public byte[] getMetabytes() {
+        byte[] metabytes = new byte[name.length + 2];
+        metabytes[0] = (byte) name.length;
         for (int i = 0; i < name.length; i++) {
-            metabytes[i+1] = name[i];
+            metabytes[i + 1] = name[i];
         }
         metabytes[name.length] = offset;
         return metabytes;
@@ -29,6 +33,6 @@ public class FunctionMeta {
 
     @Override
     public String toString() {
-        return "{Name: "+new String(name)+", Offset: "+offset+"}";
+        return "{Name: " + new String(name) + ", Offset: " + offset + "}";
     }
 }

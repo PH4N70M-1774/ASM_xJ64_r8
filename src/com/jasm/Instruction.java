@@ -26,33 +26,44 @@ public class Instruction {
     public static final int CME = 22;
 
     private static final Data data[] = {
-        getDataFor("NOP", 0),
-        getDataFor("HLT", 0),
-        getDataFor("LDI", 2),
-        getDataFor("ADD", 3),
-        getDataFor("SUB", 3),
-        getDataFor("MUL", 3),
-        getDataFor("AND", 3),
-        getDataFor("OR", 3),
-        getDataFor("XOR", 3),
-        getDataFor("ADI", 2),
-        getDataFor("SUI", 2),
-        getDataFor("CAL", 1),
-        getDataFor("RET", 0),
-        getDataFor("LOD", 2),
-        getDataFor("STR", 2),
-        getDataFor("BRT", 2),
-        getDataFor("BRF", 2),
-        getDataFor("JMP", 1),
-        getDataFor("PRT", 1),
-        getDataFor("PRS", 1),
-        getDataFor("PRP", 1),
-        getDataFor("CRR", 0),
-        getDataFor("CME", 0),
+            getDataFor("NOP", 0),
+            getDataFor("HLT", 0),
+            getDataFor("LDI", 2),
+            getDataFor("ADD", 3),
+            getDataFor("SUB", 3),
+            getDataFor("MUL", 3),
+            getDataFor("AND", 3),
+            getDataFor("OR", 3),
+            getDataFor("XOR", 3),
+            getDataFor("ADI", 2),
+            getDataFor("SUI", 2),
+            getDataFor("CAL", 1),
+            getDataFor("RET", 0),
+            getDataFor("LOD", 2),
+            getDataFor("STR", 2),
+            getDataFor("BRT", 2),
+            getDataFor("BRF", 2),
+            getDataFor("JMP", 1),
+            getDataFor("PRT", 1),
+            getDataFor("PRS", 1),
+            getDataFor("PRP", 1),
+            getDataFor("CRR", 0),
+            getDataFor("CME", 0),
     };
 
-    public Data getData(int opcode) {
+    public static Data getData(int opcode) {
         return data[opcode];
+    }
+
+    public static byte getOpcode(String str) {
+        byte idx = 0;
+        for (Data data2 : data) {
+            if (data2.mnemonic.equals(str)) {
+                return idx;
+            }
+            idx++;
+        }
+        return 0;
     }
 
     private static Data getDataFor(String mnemonic, int operands) {
