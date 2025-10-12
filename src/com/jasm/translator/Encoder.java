@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.jasm.FunctionMeta;
 import com.jasm.Instruction;
 
 public class Encoder {
@@ -126,8 +127,7 @@ public class Encoder {
         }
 
         for (FunctionMeta meta : metadata) {
-            System.out.println(meta);
-            if (meta.getName().equals(".main")) {
+            if (meta.getName().equals("main")) {
                 startAddr = meta.offset;
                 break;
             }
@@ -217,7 +217,6 @@ public class Encoder {
         byteFinal.add(startAddr);
 
         for (byte b : bytecode) {
-            System.out.println("b:"+b);
             byteFinal.add(b);
         }
     }

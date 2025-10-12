@@ -1,11 +1,11 @@
-package com.jasm.translator;
+package com.jasm;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class FunctionMeta {
     byte[] name;
-    byte offset;
+    public byte offset;
 
     public FunctionMeta(String name) {
         this(name, ((byte) 0));
@@ -26,7 +26,7 @@ public class FunctionMeta {
 
     public byte[] getMetabytes() {
         List<Byte> meta = new ArrayList<>();
-        
+
         meta.add((byte) name.length);
         for (int i = 0; i < name.length; i++) {
             meta.add(name[i]);

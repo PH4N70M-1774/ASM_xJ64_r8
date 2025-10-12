@@ -13,6 +13,11 @@ public class JasmException extends Exception {
         this.msg = e.toString();
     }
 
+    public JasmException(String msg, Exception e) {
+        super(msg, e);
+        this.msg = e.toString();
+    }
+
     @Override
     public String toString() {
         return "Error: "+msg;
