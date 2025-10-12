@@ -1,5 +1,8 @@
 package com.jasm.translator;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class FunctionMeta {
     byte[] name;
     byte offset;
@@ -22,12 +25,18 @@ public class FunctionMeta {
     }
 
     public byte[] getMetabytes() {
-        byte[] metabytes = new byte[name.length + 2];
-        metabytes[0] = (byte) name.length;
+        List<Byte> meta = new ArrayList<>();
+        
+        meta.add((byte) name.length);
         for (int i = 0; i < name.length; i++) {
-            metabytes[i + 1] = name[i];
+            meta.add(name[i]);
         }
-        metabytes[name.length] = offset;
+        meta.add(offset);
+
+        byte[] metabytes = new byte[meta.size()];
+        for (int i = 0; i < meta.size(); i++) {
+            metabytes[i] = meta.get(i);
+        }
         return metabytes;
     }
 
