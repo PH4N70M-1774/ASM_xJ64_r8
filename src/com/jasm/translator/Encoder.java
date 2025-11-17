@@ -206,11 +206,13 @@ public class Encoder {
             }
         }
 
-        byteFinal.add((byte) pool.length);
-        for (String s : pool) {
-            byteFinal.add((byte) (s.length() - 2));
-            for (byte b : s.substring(1, s.length() - 1).getBytes()) {
-                byteFinal.add(b);
+        if (pool.length == 0) {
+            byteFinal.add((byte) pool.length);
+            for (String s : pool) {
+                byteFinal.add((byte) (s.length() - 2));
+                for (byte b : s.substring(1, s.length() - 1).getBytes()) {
+                    byteFinal.add(b);
+                }
             }
         }
 

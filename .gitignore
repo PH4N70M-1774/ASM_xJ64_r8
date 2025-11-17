@@ -1,5 +1,5 @@
 .vscode
 /bin
 Test.java
-Test.jasm
-Test.jasmo
+*.jasm
+*.jasmo
