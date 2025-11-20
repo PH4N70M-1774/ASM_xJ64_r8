@@ -206,7 +206,7 @@ public class Encoder {
             }
         }
 
-        if (pool.length == 0) {
+        if (pool.length != 0 && pool[0] != null) {
             byteFinal.add((byte) pool.length);
             for (String s : pool) {
                 byteFinal.add((byte) (s.length() - 2));
@@ -214,6 +214,8 @@ public class Encoder {
                     byteFinal.add(b);
                 }
             }
+        } else {
+            byteFinal.add((byte) 0);
         }
 
         byteFinal.add(startAddr);

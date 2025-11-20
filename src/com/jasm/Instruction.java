@@ -71,8 +71,8 @@ public class Instruction {
     }
 
     public static class Data {
-        String mnemonic;
-        int operands;
+        public String mnemonic;
+        public int operands;
 
         public Data(String mnemonic, int operands) {
             this.mnemonic = mnemonic;

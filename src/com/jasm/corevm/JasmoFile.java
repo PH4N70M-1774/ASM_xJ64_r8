@@ -24,17 +24,16 @@ public class JasmoFile {
         System.out.println("====");
 
         System.out.println("POOL:");
-        System.out.println("Pool Length: "+poolLength);
+        System.out.println("Pool Length: " + poolLength);
         for (String str : pool) {
             System.out.println(str);
         }
         System.out.println("====");
-
+        System.out.println("Start Address: " + start);
         System.out.println("Instructions:");
         for (int i : instructions) {
             System.out.println(i);
         }
         System.out.println("====");
-
     }
 }
