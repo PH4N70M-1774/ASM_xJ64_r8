@@ -84,10 +84,14 @@ public class JasmoVM {
                     ip = offset;
                 }
                 case LOD -> {
-                    memory[instructions[ip++]] = reg[instructions[ip++]];
+                    int offset = instructions[ip++];
+                    int r = instructions[ip++];
+                    reg[r] = memory[offset];
                 }
                 case STR -> {
-                    reg[instructions[ip++]] = memory[instructions[ip++]];
+                    int offset = instructions[ip++];
+                    int r = instructions[ip++];
+                    memory[offset] = reg[r];
                 }
                 case BRT -> {
                     ip = ((reg[instructions[ip++]] != 0) ? instructions[ip++] : (ip + 1));
