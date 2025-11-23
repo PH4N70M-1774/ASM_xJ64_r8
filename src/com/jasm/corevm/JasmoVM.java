@@ -117,6 +117,36 @@ public class JasmoVM {
                 case CME -> {
                     Arrays.fill(memory, 0);
                 }
+                case LT -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a < b) ? 1 : 0);
+                }
+                case LTE -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a <= b) ? 1 : 0);
+                }
+                case GT -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a > b) ? 1 : 0);
+                }
+                case GTE -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a >= b) ? 1 : 0);
+                }
+                case EQU -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a == b) ? 1 : 0);
+                }
+                case NEQ -> {
+                    int a = reg[instructions[ip++]];
+                    int b = reg[instructions[ip++]];
+                    reg[instructions[ip++]] = ((a != b) ? 1 : 0);
+                }
             }
         }
     }
