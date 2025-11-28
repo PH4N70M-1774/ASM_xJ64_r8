@@ -1,6 +1,8 @@
 package com.jasm.corevm;
 
 import com.jasm.FunctionMeta;
+import com.jasm.JasmException;
+
 import static com.jasm.Instruction.*;
 
 import java.util.Arrays;
@@ -19,12 +21,13 @@ public class JasmoVM {
         ip = file.start;
     }
 
-    public void run() {
+    public void run() throws JasmException {
         int[] instructions = instr;
         int rop = -1;
         int[] reg = new int[16];
         int[] memory = new int[512];
         int[] retOffsets = new int[1024];
+        boolean internal = false;
 
         loop: while (ip < instructions.length) {
             int opcode = instructions[ip++];
@@ -75,6 +78,7 @@ public class JasmoVM {
                     reg[instructions[ip++]] -= instructions[ip++];
                 }
                 case CAL -> {
+                    internal = true;
                     int idx = instructions[ip++];
                     retOffsets[++rop] = ip;
                     ip = metadata[idx].offset;
@@ -147,7 +151,23 @@ public class JasmoVM {
                     int b = reg[instructions[ip++]];
                     reg[instructions[ip++]] = ((a != b) ? 1 : 0);
                 }
+                case INV -> {
+                    String name = pool[instructions[ip++]];
+                    JasmoVM vm = new JasmoVM(JasmoLoader.load(name));
+                    vm.setStart(vm.metadata[instructions[ip++]].offset);
+                    retOffsets[++rop] = ip;
+                    vm.run();
+                }
+                case IRT -> {
+                    if(!internal) {
+                        break loop;
+                    }
+                }
             }
         }
+    }
+
+    public void setStart(int idx) {
+        ip = idx;
     }
 }

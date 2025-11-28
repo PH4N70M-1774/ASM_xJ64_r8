@@ -39,6 +39,9 @@ public class Instruction {
     public static final int EQU = 27;
     public static final int NEQ = 28;
 
+    public static final int INV = 29;
+    public static final int IRT = 30;
+
     private static final Data data[] = {
             getDataFor("NOP", 0),
 
@@ -77,6 +80,9 @@ public class Instruction {
             getDataFor("GTE", 3),
             getDataFor("EQU", 3),
             getDataFor("NEQ", 3),
+
+            getDataFor("INV", 2),
+            getDataFor("IRT", 0),
     };
 
     public static Data getData(int opcode) {
