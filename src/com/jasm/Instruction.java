@@ -82,6 +82,11 @@ public class Instruction {
 
     public static final int IRT = 30; // Return from external function.
 
+    // ==== OPERATIONS RELATED TO DATA INPUT ====
+    public static final int SCN = 31; // Scans for user input.
+
+    public static final int SCP = 32; // Prints String from String pool and then scans for user input.
+
     private static final Data data[] = {
             getDataFor("NOP", 0),
 
@@ -123,6 +128,9 @@ public class Instruction {
 
             getDataFor("INV", 2),
             getDataFor("IRT", 0),
+
+            getDataFor("SCN", 1),
+            getDataFor("SCP", 2)
     };
 
     public static Data getData(int opcode) {

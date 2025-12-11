@@ -6,6 +6,7 @@ import com.jasm.JasmException;
 import static com.jasm.Instruction.*;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class JasmoVM {
     private int[] instr;
@@ -159,9 +160,20 @@ public class JasmoVM {
                     vm.run();
                 }
                 case IRT -> {
-                    if(!internal) {
+                    if (!internal) {
                         break loop;
                     }
+                }
+                case SCN -> {
+                    Scanner sc = new Scanner(System.in);
+                    reg[instructions[ip++]] = sc.nextInt();
+                    sc.close();
+                }
+                case SCP -> {
+                    System.out.print(pool[instructions[ip++]]);
+                    Scanner sc = new Scanner(System.in);
+                    reg[instructions[ip++]] = sc.nextInt();
+                    sc.close();
                 }
             }
         }
