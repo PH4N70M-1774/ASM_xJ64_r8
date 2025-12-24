@@ -87,6 +87,9 @@ public class Instruction {
 
     public static final int SCP = 32; // Prints String from String pool and then scans for user input.
 
+    // ==== FUNCTION RELATED TO SYSCALLS ====
+    public static final int SYS = 33; // Calls built-in functions according to number.
+
     private static final Data data[] = {
             getDataFor("NOP", 0),
 
@@ -130,7 +133,9 @@ public class Instruction {
             getDataFor("IRT", 0),
 
             getDataFor("SCN", 1),
-            getDataFor("SCP", 2)
+            getDataFor("SCP", 2),
+
+            getDataFor("SYS", 1)
     };
 
     public static Data getData(int opcode) {
