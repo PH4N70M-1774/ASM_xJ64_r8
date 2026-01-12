@@ -29,7 +29,7 @@ public class JasmoVM {
             \u001B[38;2;0;0;255m ╚════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝         ╚═══╝  ╚═╝     ╚═╝\u001B[0m
 
             JVS JasmoVM [Version 1.0.00]
-            (c) JVS Corporation. All rights  reserved.
+            (c) JVS Corporation. All rights reserved.
                         """;
     private String vm_details_uncolored = """
                  ██╗ █████╗ ███████╗███╗   ███╗ ██████╗       ██╗   ██╗███╗   ███╗
@@ -250,7 +250,7 @@ public class JasmoVM {
             case 3 -> {
                 for (int i = 0; i < memory.length; i += 4) {
                     System.out.println(
-                            String.format("%04d: %-20d%04d: %-20d%04d: %-20d%04d: %-20d", i, memory[i],
+                            String.format("0x%04X: %-20d0x%04X: %-20d0x%04X: %-20d0x%04X: %-20d", i, memory[i],
                                     i + 1, memory[i + 1], i + 2, memory[i + 2], i + 3, memory[i + 3]));
                 }
             }
