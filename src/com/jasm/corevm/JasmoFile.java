@@ -26,7 +26,7 @@ public class JasmoFile {
         System.out.println("POOL:");
         System.out.println("Pool Length: " + poolLength);
         for (String str : pool) {
-            System.out.println(str);
+            System.out.println((str.endsWith("\n")) ? (str.substring(0, (str.length() - 1)) + "\\n") : str);
         }
         System.out.println("====");
         System.out.println("Start Address: " + start);
